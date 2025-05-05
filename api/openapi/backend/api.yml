@@ -1,0 +1,340 @@
+openapi: 3.0.0
+info:
+  title: Backend RESTful API
+  version: 1.0.0
+  description: API for the backend
+servers:
+  - url: https://warmhouse.ru
+    description: Production server
+paths:
+  /api/v1/devices:
+    get:
+      operationId: get /devices
+      summary: Get all devices
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+          description: The access token
+        - name: last_id
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: group_id
+          in: query
+          required: false
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: A list of devices
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/DeviceData"
+        "401":
+          description: Unauthorized
+        "500":
+          description: Internal server error
+    post:
+      operationId: post /devices
+      summary: Add a new device
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+          description: The access token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DevicePayload"
+      responses:
+        "200":
+          description: Device added successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "500":
+          description: Internal server error
+  /api/v1/devices/{deviceId}:
+    get:
+      operationId: get /devices/{deviceId}
+      summary: Get a device by ID
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+          description: The access token
+        - name: deviceId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Device data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeviceData"
+        "401":
+          description: Unauthorized
+        "404":
+          description: Device not found
+        "500":
+          description: Internal server error
+    delete:
+      operationId: delete /devices/{deviceId}
+      summary: Delete a device
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+          description: The access token
+        - name: deviceId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Device deleted successfully
+        "401":
+          description: Unauthorized
+        "404":
+          description: Device not found
+        "500":
+          description: Internal server error
+  /api/v1/devices/{deviceId}/commands:
+    get:
+      operationId: get /devices/{deviceId}/commands
+      summary: Get sent commands for a device
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+          description: The access token
+        - name: deviceId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CommandData"
+          description: A list of sent commands
+        "401":
+          description: Unauthorized
+        "404":
+          description: Device not found
+        "500":
+          description: Internal server error
+    post:
+      operationId: post /devices/{deviceId}/commands
+      summary: Send a command to a device
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+          description: The access token
+        - name: deviceId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CommandPayload"
+      responses:
+        "200":
+          description: Command sent successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Unauthorized
+        "404":
+          description: Device not found
+        "500":
+          description: Internal server error
+  /api/v1/devices/{deviceId}/telemetry:
+    get:
+      operationId: get /devices/{deviceId}/telemetry
+      summary: Get telemetry data for a device
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+          description: The access token
+        - name: deviceId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/TelemetryData"
+          description: A list of telemetry data
+        "401":
+          description: Unauthorized
+        "404":
+          description: Device not found
+        "500":
+          description: Internal server error
+
+  /api/v1/deviceTypes:
+    get:
+      operationId: get /deviceTypes
+      summary: Get all device types
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+          description: The access token
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/DeviceTypeData"
+          description: A list of device types
+        "401":
+          description: Unauthorized
+        "500":
+          description: Internal server error
+
+  /api/v1/deviceTypes/{deviceTypeId}:
+    get:
+      operationId: get /deviceTypes/{deviceTypeId}
+      summary: Get a device type by ID
+      parameters:
+        - in: header
+          name: Authorization
+          required: true
+          schema:
+            type: string
+          description: The access token
+        - name: deviceTypeId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeviceTypeData"
+          description: Device type data
+        "401":
+          description: Unauthorized
+        "404":
+          description: Device type not found
+        "500":
+          description: Internal server error
+
+components:
+  schemas:
+    DevicePayload:
+      type: object
+      properties:
+        id:
+          type: integer
+        typeId:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+    DeviceData:
+      type: object
+      properties:
+        id:
+          type: integer
+        typeId:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        createdAt:
+          type: string
+    DeviceTypeData:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+    CommandData:
+      type: object
+      properties:
+        id:
+          type: integer
+        command:
+          type: string
+        value:
+          type: string
+        createdAt:
+          type: string
+        deviceId:
+          type: integer
+    CommandPayload:
+      type: object
+      properties:
+        command:
+          type: string
+        value:
+          type: string
+    TelemetryData:
+      type: object
+      properties:
+        id:
+          type: integer
+        value:
+          type: string
+        type:
+          type: string
+        timestamp:
+          type: string
