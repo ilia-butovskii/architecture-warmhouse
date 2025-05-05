@@ -95,11 +95,21 @@
 
 ### 1. Тип API
 
-Укажите, какой тип API вы будете использовать для взаимодействия микросервисов. Объясните своё решение.
+Испольуется два подхода 1. REST - для синхронного взаимодействия 2. Async (Kafka) - для асинхронного
+
+Синхронное взаимодействие используется в местах, где нам необходим ответ от сервисов и отказоустойчивость не так критична.
+
+Kafka же используется в местах, где нам необходима повышенная отказоустойчивость. Где реузльтат выполнения не ожидается мгновенно.
 
 ### 2. Документация API
 
-Здесь приложите ссылки на документацию API для микросервисов, которые вы спроектировали в первой части проектной работы. Для документирования используйте Swagger/OpenAPI или AsyncAPI.
+[deviceCommandsController](https://architecture-warmhouse.pages.dev/async/deviceCommandsController/)
+
+[deviceMonitoringService](https://architecture-warmhouse.pages.dev/async/deviceMonitoringService/)
+
+[AuthService](https://architecture-warmhouse.pages.dev/openapi/authService/)
+
+[Backend](https://architecture-warmhouse.pages.dev/openapi/backend/)
 
 # Задание 5. Работа с docker и docker-compose
 
