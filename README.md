@@ -53,7 +53,7 @@
 
 ### 5. Визуализация контекста системы — диаграмма С4
 
-![Context](resources/task1/Warmhouse_Context-Warmhouse_Context_Diagram.png)
+![Context](resources/task1/C4_Context.png)
 
 # Задание 2. Проектирование микросервисной архитектуры
 
