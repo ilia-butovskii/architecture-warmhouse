@@ -9,7 +9,7 @@ servers:
 paths:
   /api/v1/devices:
     get:
-      operationId: get /devices
+      operationId: getDevices
       summary: Get all devices
       parameters:
         - in: header
@@ -47,7 +47,7 @@ paths:
         "500":
           description: Internal server error
     post:
-      operationId: post /devices
+      operationId: createDevice
       summary: Add a new device
       parameters:
         - in: header
@@ -73,7 +73,7 @@ paths:
           description: Internal server error
   /api/v1/devices/{deviceId}:
     get:
-      operationId: get /devices/{deviceId}
+      operationId: getDeviceById
       summary: Get a device by ID
       parameters:
         - in: header
@@ -101,7 +101,7 @@ paths:
         "500":
           description: Internal server error
     delete:
-      operationId: delete /devices/{deviceId}
+      operationId: deleteDeviceById
       summary: Delete a device
       parameters:
         - in: header
@@ -126,7 +126,7 @@ paths:
           description: Internal server error
   /api/v1/devices/{deviceId}/commands:
     get:
-      operationId: get /devices/{deviceId}/commands
+      operationId: getCommandsByDeviceId
       summary: Get sent commands for a device
       parameters:
         - in: header
@@ -156,7 +156,7 @@ paths:
         "500":
           description: Internal server error
     post:
-      operationId: post /devices/{deviceId}/commands
+      operationId: sendCommandToDevice
       summary: Send a command to a device
       parameters:
         - in: header
@@ -189,7 +189,7 @@ paths:
           description: Internal server error
   /api/v1/devices/{deviceId}/telemetry:
     get:
-      operationId: get /devices/{deviceId}/telemetry
+      operationId: getTelemetryByDeviceId
       summary: Get telemetry data for a device
       parameters:
         - in: header
@@ -221,7 +221,7 @@ paths:
 
   /api/v1/deviceTypes:
     get:
-      operationId: get /deviceTypes
+      operationId: getDeviceTypes
       summary: Get all device types
       parameters:
         - in: header
@@ -246,7 +246,7 @@ paths:
 
   /api/v1/deviceTypes/{deviceTypeId}:
     get:
-      operationId: get /deviceTypes/{deviceTypeId}
+      operationId: getDeviceTypeById
       summary: Get a device type by ID
       parameters:
         - in: header
