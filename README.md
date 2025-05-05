@@ -61,19 +61,35 @@
 
 **Диаграмма контейнеров (Containers)**
 
-Добавьте диаграмму.
+![Containers](resources/task2/C4_Container.png)
 
-**Диаграмма компонентов (Components)**
+**Диаграмма компонентов (Components) API**
 
-Добавьте диаграмму для каждого из выделенных микросервисов.
+![Containers](resources/task2/components/C4_API_Component.png)
 
-**Диаграмма кода (Code)**
+**Диаграмма компонентов (Components) AuthService**
 
-Добавьте одну диаграмму или несколько.
+![Containers](resources/task2/components/C4_AuthService_Component.png)
+
+**Диаграмма компонентов (Components) DevcieCommandsController**
+
+![Containers](resources/task2/components/C4_DeviceCommandsController_Component.png)
+
+**Диаграмма компонентов (Components) TelemetryConsumer**
+
+![Containers](resources/task2/components/C4_TelemetryConsumer_Component.png)
+
+**Диаграмма компонентов (Components) UserService**
+
+![Containers](resources/task2/components/C4_UserService_Component.png)
+
+**Диаграмма кода (Code) AuthService**
+
+![Code](resources/task2/C4_AuthService_code.png)
 
 # Задание 3. Разработка ER-диаграммы
 
-Добавьте сюда ER-диаграмму. Она должна отражать ключевые сущности системы, их атрибуты и тип связей между ними.
+![ER](resources/task3/ER.png)
 
 # Задание 4. Создание и документирование API
 
