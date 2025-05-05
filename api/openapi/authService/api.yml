@@ -25,7 +25,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/LoginResponse"
         "401":
-          description: Unauthorized. Invalid credentials.
+          description: Unauthorized. Invalid credentials
         "500":
           description: Internal server error.
   /register:
