@@ -2,7 +2,7 @@ asyncapi: 3.0.0
 info:
   title: Device Monitoring Service
   version: 1.0.0
-  description: Kafka API for monitoring devices
+  description: Internal Kafka API for monitoring devices
 servers:
   production:
     host: kafka.warmhouse.com:9092

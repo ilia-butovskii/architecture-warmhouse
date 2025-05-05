@@ -4,7 +4,7 @@
   "info": {
     "title": "Device Commands Controller",
     "version": "1.0.0",
-    "description": "Kafka API for sending commands to devices"
+    "description": "Internal Kafka API for sending commands to devices"
   },
   "servers": {
     "production": {

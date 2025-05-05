@@ -4,7 +4,7 @@
   "info": {
     "title": "Device Monitoring Service",
     "version": "1.0.0",
-    "description": "Kafka API for monitoring devices"
+    "description": "Internal Kafka API for monitoring devices"
   },
   "servers": {
     "production": {
