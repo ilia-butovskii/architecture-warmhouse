@@ -192,3 +192,4 @@ build/
 
 tmp/
 task-*
+apps/temperature-api/node_modules/
