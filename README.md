@@ -103,6 +103,14 @@ Kafka же используется в местах, где нам необхо�
 
 ### 2. Документация API
 
+Ссылки на директории с YML и со сгенерированной документацией.
+
+[Директория с YML](./api/)
+
+[Директория со сгенерированной документацией](./docs/)
+
+Ниже представлены ссылки на каждую документацию на CF pages. Она генерируется автоматически при коммите и деплоется туда. Должны работать, если переходить по полному URL из README(а именно как указано в ссылках ниже).
+
 [deviceCommandsController](https://architecture-warmhouse.pages.dev/async/deviceCommandsController/)
 
 [deviceMonitoringService](https://architecture-warmhouse.pages.dev/async/deviceMonitoringService/)
