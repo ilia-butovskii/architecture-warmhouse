@@ -1,0 +1,51 @@
+asyncapi: 3.0.0
+info:
+  title: Device Monitoring Service
+  version: 1.0.0
+  description: Internal Kafka API for monitoring devices
+servers:
+  production:
+    host: kafka.warmhouse.com:9092
+    protocol: kafka
+    description: Production Kafka server
+
+defaultContentType: application/json
+
+channels:
+  deviceMonitoring:
+    description: Channel for monitoring devices
+    address: device-monitoring
+    messages:
+      DeviceTelemetry:
+        $ref: "#/components/messages/DeviceTelemetry"
+
+operations:
+  sendDeviceTelemetry:
+    description: Send a device telemetry update
+    action: send
+    channel:
+      $ref: "#/channels/deviceMonitoring"
+
+components:
+  messages:
+    DeviceTelemetry:
+      payload:
+        type: object
+        properties:
+          deviceId:
+            type: string
+            description: The ID of the device
+          type:
+            type: string
+            description: The type of telemetry
+          value:
+            type: string
+            description: The value of the telemetry
+          timestamp:
+            type: string
+            description: The timestamp of the telemetry
+        required:
+          - deviceId
+          - type
+          - value
+          - timestamp
